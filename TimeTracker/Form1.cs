@@ -80,7 +80,7 @@ namespace TimeTracker
             if (IsTracking)
             {
                 TimeSpan ts = DateTime.Now.Subtract(CurrentTD.Start);
-                TimeTrackedLB.Text = string.Format("{0}:{1}", ts.Minutes, ts.Seconds);
+                TimeTrackedLB.Text = string.Format("{0}:{1}", ts.Minutes.ToString("00"), ts.Seconds.ToString("00"));
             }
         }
 

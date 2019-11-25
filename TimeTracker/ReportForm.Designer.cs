@@ -31,7 +31,10 @@
             this.ReportGridView = new System.Windows.Forms.DataGridView();
             this.ReportDatePicker = new System.Windows.Forms.DateTimePicker();
             this.ProjectTB = new System.Windows.Forms.TextBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.TotalHoursLabel = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ReportGridView)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ReportGridView
@@ -39,7 +42,7 @@
             this.ReportGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ReportGridView.Location = new System.Drawing.Point(12, 52);
             this.ReportGridView.Name = "ReportGridView";
-            this.ReportGridView.Size = new System.Drawing.Size(776, 386);
+            this.ReportGridView.Size = new System.Drawing.Size(776, 364);
             this.ReportGridView.TabIndex = 0;
             // 
             // ReportDatePicker
@@ -62,11 +65,28 @@
             this.ProjectTB.TabIndex = 7;
             this.ProjectTB.TextChanged += new System.EventHandler(this.ProjectTB_TextChanged);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TotalHoursLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.TabIndex = 8;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // TotalHoursLabel
+            // 
+            this.TotalHoursLabel.Name = "TotalHoursLabel";
+            this.TotalHoursLabel.Size = new System.Drawing.Size(17, 17);
+            this.TotalHoursLabel.Text = "--";
+            // 
             // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ProjectTB);
             this.Controls.Add(this.ReportDatePicker);
             this.Controls.Add(this.ReportGridView);
@@ -76,6 +96,8 @@
             this.Text = "Report Form";
             this.Load += new System.EventHandler(this.ReportForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ReportGridView)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -86,5 +108,7 @@
         private System.Windows.Forms.DataGridView ReportGridView;
         private System.Windows.Forms.DateTimePicker ReportDatePicker;
         private System.Windows.Forms.TextBox ProjectTB;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel TotalHoursLabel;
     }
 }

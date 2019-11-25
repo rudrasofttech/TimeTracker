@@ -17,12 +17,7 @@ namespace TimeTracker
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            using (var ctx = new TimeTrackerContext())
-            {
-                var tt = new TrackDetail() { Project = "Sample", Task = "Sample Task", Start = DateTime.Now };
-                ctx.TrackDetails.Add(tt);
-                ctx.SaveChanges();
-            }
+            
         }
     }
 }

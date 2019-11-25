@@ -19,6 +19,7 @@ namespace TimeTracker
 
         private void ReportForm_Load(object sender, EventArgs e)
         {
+            ReportDatePicker.Value = DateTime.Now;
             ProjectTB.AutoCompleteCustomSource = GetProjectList();
             PopulateReport();
         }
@@ -34,6 +35,17 @@ namespace TimeTracker
                             select t;
                 List<TrackDetail> list = query.ToList();
                 ReportGridView.DataSource = list;
+                var minutes = 0;
+                foreach(var item in list)
+                {
+                    minutes += item.End.Subtract(item.Start).Minutes;
+                }
+                if(minutes < 60) {
+                    TotalHoursLabel.Text = minutes.ToString() + " Minutes";
+                } else {
+                    TotalHoursLabel.Text = (minutes / 60).ToString() + " Hours";
+                }
+                
             }
         }
 
