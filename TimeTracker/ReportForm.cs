@@ -40,10 +40,11 @@ namespace TimeTracker
                 {
                     minutes += item.End.Subtract(item.Start).Minutes;
                 }
-                if(minutes < 60) {
-                    TotalHoursLabel.Text = minutes.ToString() + " Minutes";
-                } else {
-                    TotalHoursLabel.Text = (minutes / 60).ToString() + " Hours";
+                
+
+                for(int i = 0, j = 0; i <= minutes; i += 60, j++)
+                {
+                    TotalHoursLabel.Text = string.Format("{0}:{1}", j, (minutes - i));
                 }
                 
             }

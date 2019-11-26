@@ -47,7 +47,7 @@
             // 
             // ReportDatePicker
             // 
-            this.ReportDatePicker.Location = new System.Drawing.Point(13, 13);
+            this.ReportDatePicker.Location = new System.Drawing.Point(13, 10);
             this.ReportDatePicker.Name = "ReportDatePicker";
             this.ReportDatePicker.Size = new System.Drawing.Size(200, 20);
             this.ReportDatePicker.TabIndex = 1;
@@ -59,9 +59,9 @@
             this.ProjectTB.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.ProjectTB.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.ProjectTB.Font = new System.Drawing.Font("MS Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProjectTB.Location = new System.Drawing.Point(249, 6);
+            this.ProjectTB.Location = new System.Drawing.Point(228, 7);
             this.ProjectTB.Name = "ProjectTB";
-            this.ProjectTB.Size = new System.Drawing.Size(272, 27);
+            this.ProjectTB.Size = new System.Drawing.Size(225, 27);
             this.ProjectTB.TabIndex = 7;
             this.ProjectTB.TextChanged += new System.EventHandler(this.ProjectTB_TextChanged);
             // 
