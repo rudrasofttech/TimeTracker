@@ -38,4 +38,13 @@ namespace TimeTracker
         public byte[] Picture { get; set; }
         public TrackDetail Tracked { get; set; }
     }
+
+    public class TrackReportItem
+    {
+        public string Project { get; set; }
+        public string Task { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
+        public int Minutes { get; set; }
+    }
 }

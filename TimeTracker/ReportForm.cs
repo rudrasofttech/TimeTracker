@@ -33,18 +33,27 @@ namespace TimeTracker
  t.Start.Month == ReportDatePicker.Value.Month && t.Start.Day == ReportDatePicker.Value.Day &&
  (ProjectTB.Text.Trim() == "" || t.Project.Contains(ProjectTB.Text.Trim()))
                             select t;
-                List<TrackDetail> list = query.ToList();
-                ReportGridView.DataSource = list;
-                var minutes = 0;
-                foreach(var item in list)
-                {
-                    minutes += item.End.Subtract(item.Start).Minutes;
-                }
-                
 
-                for(int i = 0, j = 0; i <= minutes; i += 60, j++)
+                List<TrackReportItem> list = new List<TrackReportItem>();
+                
+                double minutes = 0;
+                foreach(var item in query)
                 {
-                    TotalHoursLabel.Text = string.Format("{0}:{1}", j, (minutes - i));
+                    TrackReportItem tri = new TrackReportItem() {
+                        End = item.End,
+                        Minutes = (int)(item.End.Subtract(item.Start).TotalMinutes),
+                        Project = item.Project,
+                        Start = item.Start,
+                        Task = item.Task
+                    };
+                    list.Add(tri);
+                    minutes += item.End.Subtract(item.Start).TotalMinutes;
+                }
+                ReportGridView.DataSource = list;
+
+                for (int i = 0, j = 0; i <= minutes; i += 60, j++)
+                {
+                    TotalHoursLabel.Text = string.Format("{0}:{1}", j, (int)(minutes - i));
                 }
                 
             }
