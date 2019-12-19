@@ -19,7 +19,7 @@ namespace TimeTracker
 
         private void ReportForm_Load(object sender, EventArgs e)
         {
-            ReportDatePicker.Value = DateTime.Now;
+            ReportCalendar.SelectionRange = new SelectionRange(DateTime.Now, DateTime.Now);
             ProjectTB.AutoCompleteCustomSource = GetProjectList();
             PopulateReport();
         }
@@ -29,8 +29,7 @@ namespace TimeTracker
             using (var ctx = new TimeTrackerContext())
             {
                 var query = from t in ctx.TrackDetails
-                            where t.Start.Year == ReportDatePicker.Value.Year &&
- t.Start.Month == ReportDatePicker.Value.Month && t.Start.Day == ReportDatePicker.Value.Day &&
+                            where t.Start >= ReportCalendar.SelectionRange.Start && t.End <= ReportCalendar.SelectionRange.End &&
  (ProjectTB.Text.Trim() == "" || t.Project.Contains(ProjectTB.Text.Trim()))
                             select t;
 
@@ -69,14 +68,12 @@ namespace TimeTracker
             }
         }
 
-        private void ReportDatePicker_ValueChanged(object sender, EventArgs e)
+        private void ProjectTB_TextChanged(object sender, EventArgs e)
         {
             PopulateReport();
         }
 
-        
-
-        private void ProjectTB_TextChanged(object sender, EventArgs e)
+        private void ReportCalendar_DateChanged(object sender, DateRangeEventArgs e)
         {
             PopulateReport();
         }

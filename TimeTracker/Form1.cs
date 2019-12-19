@@ -13,6 +13,8 @@ namespace TimeTracker
 {
     public partial class Form1 : Form
     {
+        PopupNotifier pn = new PopupNotifier();
+
         private bool _isTracking = false;
         public bool IsTracking
         {
@@ -52,6 +54,7 @@ namespace TimeTracker
         {
             ProjectTB.AutoCompleteCustomSource = GetProjectList();
             NotificationTimer.Start();
+            pn.Click += Pn_Click;
         }
 
 
@@ -105,12 +108,12 @@ namespace TimeTracker
             SaveTime();
             this.Invoke((MethodInvoker)delegate
             {
-                PopupNotifier pn = new PopupNotifier();
+                
                 if (IsTracking)
                 {
                     pn.TitleText = string.Format("Tracking-{0}", CurrentTD.Project);
                     TimeSpan ts = DateTime.Now.Subtract(CurrentTD.Start);
-                    pn.ContentText = string.Format("{0}\n{1}", string.Format("{0}:{1}", ts.Minutes, ts.Seconds), CurrentTD.Task);
+                    pn.ContentText = string.Format("{0}\n{1}", TimeTrackedLB.Text, CurrentTD.Task);
                 }
                 else
                 {
@@ -119,7 +122,14 @@ namespace TimeTracker
                 }
                
                 pn.Popup();
+                
             });
+            
+        }
+
+        private void Pn_Click(object sender, EventArgs e)
+        {
+            this.BringToFront();
             
         }
 
